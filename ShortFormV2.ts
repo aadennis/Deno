@@ -3,7 +3,7 @@
 //Google: TS1205 [ERROR]: Re-exporting a type when the '--isolatedModules' flag is provided requires using 'export type'
 
 // example call:
-// deno run -A ShortForm.ts
+// deno run -A ShortFormV2.ts
 // Once running, open the file submit-actionV2.html
 // MAKE SURE IT IS V2, BECAUSE THIS CONTAINS THE NECESSARY HEADERS AND ENCODING METADATA, 
 // e.g.     <meta Content-Type="text/html; charset=utf-8"> and
