@@ -3,7 +3,7 @@
 //Google: TS1205 [ERROR]: Re-exporting a type when the '--isolatedModules' flag is provided requires using 'export type'
 
 // example call:
-// deno run -A ShortFormV2.ts -p tsconfig.json
+// deno run -A --allow-write ShortFormV3.ts -p tsconfig.json
 // Once running, open the file submit-actionV2.html
 // MAKE SURE IT IS V2, BECAUSE THIS CONTAINS THE NECESSARY HEADERS AND ENCODING METADATA, 
 // e.g.     <meta Content-Type="text/html; charset=utf-8"> and
@@ -26,7 +26,23 @@ async function ProcessAction(req: any) {
   if (form) {
     console.log("is a form")
     console.log(form.fields)
+    writeJson("c:/temp/mahFields.log", form.fields);
   } else {
     console.log("not a form")
   }
 }
+
+/**
+ * write.ts
+ */
+function writeJson(path: string, data: object): string {
+  try {
+    Deno.writeTextFileSync(path, JSON.stringify(data));
+
+    return "Written to " + path;
+  } catch (e) {
+    return e.message;
+  }
+}
+
+// console.log(writeJson("./data.json", { hello: "World" }));
