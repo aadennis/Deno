@@ -16,13 +16,17 @@ const s = serve({ port: 8000 });
 console.log("running now on port 8000")
 for await (const req of s) {
   if (req.url === "/action") {
-    const form = await multiParser(req)
+    ProcessAction(req);
+  }
+}
 
-    if (form) {
-      console.log("is a form")
-      console.log(form.fields)
-    } else {
-      console.log("not a form")
-    }
+async function ProcessAction(req: any) {
+  const form = await multiParser(req)
+
+  if (form) {
+    console.log("is a form")
+    console.log(form.fields)
+  } else {
+    console.log("not a form")
   }
 }
